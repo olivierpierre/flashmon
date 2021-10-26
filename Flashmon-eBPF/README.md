@@ -10,6 +10,11 @@ sudo apt install bpfcc-tools python3-bpfcc libbpfcc libbpfcc-dev
 
 ## Usage
 
+On a traditional PC you can emulate a NAND flash chip with nandsim:
+```
+sudo modprobe nandim
+```
+
 To trace the entire chip:
 ```
 sudo ./flashmon.py
