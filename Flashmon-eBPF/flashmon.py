@@ -40,10 +40,10 @@ int kprobe__nand_read_oob(struct pt_regs *ctx, struct mtd_info *mtd,
     struct nand_chip *chip = mtd_to_nand(mtd);
     unsigned long long int page = (unsigned long long int)from / mtd->writesize;
 
-    if(chip->pagebuf == page)
+    if(chip->pagecache.page == page)
         bpf_trace_printk("nand_read pagebuf hit page %u\\n", page);
     else
-        bpf_trace_printk("nand_read page %u\\n", page, chip->pagebuf);
+        bpf_trace_printk("nand_read page %u\\n", page, chip->pagecache.page);
 
     return 0;
 }
